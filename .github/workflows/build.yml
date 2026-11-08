@@ -1,0 +1,29 @@
+name: Build Android APK
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+    - name: Install Cordova
+      run: npm install -g cordova
+    - name: Create Cordova App
+      run: |
+        cordova create myapp
+        cp index.html myapp/www/
+        cd myapp
+        cordova platform add android
+    - name: Build APK
+      run: |
+        cd myapp
+        cordova build android --debug
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: my-app-apk
+        path: myapp/platforms/android/app/build/outputs/apk/debug/app-debug.apk
