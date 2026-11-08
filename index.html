@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>৪-৭-৮ শ্বাস-প্রশ্বাস | সম্পূর্ণ গাইড</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --inhale: #38bdf8;
+    --hold:   #a78bfa;
+    --exhale: #34d399;
+    --bg-1: #0f172a;
+    --bg-2: #1e1b4b;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --card: rgba(255, 255, 255, 0.06);
+    --card-border: rgba(255, 255, 255, 0.12);
+  }
+
+  html, body {
+    height: 100%;
+    font-family: 'Hind Siliguri', 'Noto Sans Bengali', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--text);
+    background: radial-gradient(ellipse at top, var(--bg-2) 0%, var(--bg-1) 60%, #020617 100%);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(2px 2px at 20% 30%, white, transparent),
+      radial-gradient(1px 1px at 60% 20%, white, transparent),
+      radial-gradient(1.5px 1.5px at 80% 70%, white, transparent),
+      radial-gradient(1px 1px at 30% 80%, white, transparent),
+      radial-gradient(2px 2px at 90% 40%, white, transparent),
+      radial-gradient(1px 1px at 10% 60%, white, transparent),
+      radial-gradient(1.5px 1.5px at 50% 50%, white, transparent),
+      radial-gradient(1px 1px at 70% 90%, white, transparent);
+    background-size: 200% 200%;
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+    animation: twinkle 8s ease-in-out infinite;
+  }
+  @keyframes twinkle { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.5; } }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px 20px 80px; position: relative; z-index: 1; }
+
+  header { text-align: center; padding: 30px 0 20px; }
+  .badge {
+    display: inline-block; padding: 6px 16px; border-radius: 999px;
+    background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3);
+    color: #7dd3fc; font-size: 13px; letter-spacing: 0.5px; margin-bottom: 14px;
+  }
+  h1 {
+    font-size: clamp(28px, 5vw, 44px); font-weight: 700;
+    background: linear-gradient(135deg, #38bdf8 0%, #a78bfa 50%, #34d399 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .subtitle { color: var(--muted); font-size: 15px; max-width: 600px; margin: 0 auto; }
+
+  .breath-card {
+    margin: 36px auto 0; background: var(--card); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border); border-radius: 32px; padding: 40px 30px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4); position: relative; overflow: hidden;
+  }
+  .breath-card::before {
+    content: ''; position: absolute; inset: -2px;
+    background: linear-gradient(135deg, rgba(56,189,248,0.4), rgba(167,139,250,0.4), rgba(52,211,153,0.4));
+    border-radius: 32px; z-index: -1; opacity: 0.5; filter: blur(20px);
+  }
+
+  .stage { display: flex; flex-direction: column; align-items: center; padding: 20px 0 30px; }
+  .circle-wrap { position: relative; width: 320px; height: 320px; display: flex; align-items: center; justify-content: center; margin-bottom: 28px; }
+  .ring { position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.08); }
+  .ring-2 { inset: 20px; }
+  .ring-3 { inset: 40px; border-color: rgba(255,255,255,0.05); }
+
+  .circle {
+    width: 180px; height: 180px; border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3), transparent 60%),
+                linear-gradient(135deg, var(--inhale) 0%, #6366f1 100%);
+    box-shadow: 0 0 80px rgba(56, 189, 248, 0.4), inset 0 0 40px rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 4s cubic-bezier(0.4, 0, 0.2, 1), background 1.2s ease, box-shadow 1.2s ease;
+    transform: scale(0.6); position: relative;
+  }
+  .circle.hold   { transition: transform 7s linear, background 1.2s ease, box-shadow 1.2s ease; }
+  .circle.exhale { transition: transform 8s cubic-bezier(0.4, 0, 0.2, 1), background 1.2s ease, box-shadow 1.2s ease; }
+  .circle.inhale {
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), transparent 60%), linear-gradient(135deg, var(--inhale) 0%, #6366f1 100%);
+    box-shadow: 0 0 100px rgba(56, 189, 248, 0.6), inset 0 0 40px rgba(255,255,255,0.1);
+  }
+  .circle.hold {
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), transparent 60%), linear-gradient(135deg, var(--hold) 0%, #6366f1 100%);
+    box-shadow: 0 0 110px rgba(167, 139, 250, 0.7), inset 0 0 40px rgba(255,255,255,0.1);
+  }
+  .circle.exhale {
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), transparent 60%), linear-gradient(135deg, var(--exhale) 0%, #6366f1 100%);
+    box-shadow: 0 0 100px rgba(52, 211, 153, 0.6), inset 0 0 40px rgba(255,255,255,0.1);
+  }
+  .circle .count { font-size: 64px; font-weight: 700; color: white; text-shadow: 0 2px 20px rgba(0,0,0,0.3); z-index: 2; }
+
+  .phase-label { font-size: 32px; font-weight: 600; margin-bottom: 6px; text-align: center; transition: color 0.4s ease; }
+  .phase-hint { color: var(--muted); font-size: 14px; text-align: center; min-height: 22px; }
+
+  .controls { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 28px; }
+  .btn {
+    padding: 12px 24px; border-radius: 999px; border: 1px solid var(--card-border);
+    background: rgba(255,255,255,0.06); color: var(--text); font-family: inherit; font-size: 15px; font-weight: 500;
+    cursor: pointer; transition: all 0.25s ease; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+  .btn.primary { background: linear-gradient(135deg, #38bdf8, #6366f1); border: none; box-shadow: 0 8px 24px rgba(99, 102, 241, 0.35); }
+  .btn.primary:hover { box-shadow: 0 12px 28px rgba(99, 102, 241, 0.5); }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+  .settings { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 22px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .setting { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); }
+  .setting select, .setting input[type="checkbox"] {
+    background: rgba(255,255,255,0.08); border: 1px solid var(--card-border); color: var(--text);
+    padding: 6px 10px; border-radius: 8px; font-family: inherit; font-size: 14px; cursor: pointer;
+  }
+  .setting input[type="checkbox"] { width: 18px; height: 18px; accent-color: #6366f1; }
+
+  body.night { background: #000 !important; }
+  body.night::before { opacity: 0.05; }
+  body.night .breath-card, body.night .step, body.night .benefits {
+    background: rgba(0, 0, 0, 0.4); border-color: rgba(255, 255, 255, 0.05); box-shadow: none;
+  }
+  body.night .breath-card::before { opacity: 0.1; }
+  body.night header h1 { color: #475569; -webkit-text-fill-color: #475569; }
+  body.night .badge, body.night .subtitle, body.night .step p, body.night .benefits li,
+  body.night .phase-hint, body.night .setting, body.night .stat-label, body.night footer { color: #334155 !important; }
+  body.night .stat-value { color: #475569 !important; -webkit-text-fill-color: #475569; }
+  body.night .step h3, body.night .benefits h2, body.night .phase-label, body.night .num-display { color: #64748b !important; }
+  body.night .circle { box-shadow: 0 0 40px rgba(99, 102, 241, 0.3); }
+  body.night .controls .btn { background: rgba(255,255,255,0.04); color: #64748b; border-color: rgba(255,255,255,0.05); }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 30px; }
+  .stat { background: rgba(255,255,255,0.04); border: 1px solid var(--card-border); border-radius: 16px; padding: 16px 10px; text-align: center; }
+  .stat-value {
+    font-size: 24px; font-weight: 700; background: linear-gradient(135deg, #38bdf8, #a78bfa);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  .progress { margin-top: 24px; height: 6px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden; }
+  .progress-bar { height: 100%; background: linear-gradient(90deg, #38bdf8, #a78bfa, #34d399); width: 0%; border-radius: 999px; transition: width 0.4s ease; }
+
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 50px; }
+  .step { background: var(--card); backdrop-filter: blur(12px); border: 1px solid var(--card-border); border-radius: 20px; padding: 24px; position: relative; transition: transform 0.3s ease; }
+  .step:hover { transform: translateY(-4px); }
+  .step-num { position: absolute; top: -14px; left: 24px; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 16px; }
+  .step:nth-child(1) .step-num { background: linear-gradient(135deg, #38bdf8, #0ea5e9); }
+  .step:nth-child(2) .step-num { background: linear-gradient(135deg, #a78bfa, #8b5cf6); }
+  .step:nth-child(3) .step-num { background: linear-gradient(135deg, #34d399, #10b981); }
+  .step:nth-child(4) .step-num { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
+  .step h3 { font-size: 18px; margin: 6px 0 8px; }
+  .step p { color: var(--muted); font-size: 14px; }
+  .step .num-display { font-size: 36px; font-weight: 700; margin: 6px 0 10px; }
+  .step:nth-child(1) .num-display { color: #38bdf8; }
+  .step:nth-child(2) .num-display { color: #a78bfa; }
+  .step:nth-child(3) .num-display { color: #34d399; }
+  .step:nth-child(4) .num-display { color: #fbbf24; }
+
+  .benefits { margin-top: 50px; background: var(--card); backdrop-filter: blur(12px); border: 1px solid var(--card-border); border-radius: 24px; padding: 32px; }
+  .benefits h2 { font-size: 24px; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+  .benefits ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .benefits li { padding: 12px 14px; background: rgba(255,255,255,0.04); border-radius: 12px; border-left: 3px solid #6366f1; font-size: 14px; color: var(--text); }
+  .benefits li::before { content: '✓'; color: #34d399; font-weight: 700; margin-right: 8px; }
+
+  footer { margin-top: 60px; text-align: center; color: var(--muted); font-size: 13px; }
+  footer strong { color: #cbd5e1; }
+
+  @media (max-width: 480px) {
+    .circle-wrap { width: 260px; height: 260px; }
+    .circle { width: 140px; height: 140px; }
+    .circle .count { font-size: 52px; }
+    .phase-label { font-size: 26px; }
+    .breath-card { padding: 28px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <span class="badge">ডাঃ অ্যান্ড্রু ওয়েইল পদ্ধতি</span>
+    <h1>৪-৭-৮ শ্বাস-প্রশ্বাস</h1>
+    <p class="subtitle">নাক দিয়ে ৪ সেকেন্ড শ্বাস নিন → ৭ সেকেন্ড ধরে রাখুন → মুখ দিয়ে ৮ সেকেন্ড ছাড়ুন। এই সহজ কৌশলটি মনকে শান্ত করে, ঘুম আনে এবং স্নায়ুতন্ত্রকে প্রশমিত করে।</p>
+  </header>
+
+  <section class="breath-card">
+    <div class="stage">
+      <div class="circle-wrap">
+        <div class="ring"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+        <div class="circle" id="circle">
+          <span class="count" id="count">4</span>
+        </div>
+      </div>
+      <div class="phase-label" id="phaseLabel" style="color: var(--inhale);">প্রস্তুত হন</div>
+      <div class="phase-hint" id="phaseHint">শুরু করতে নিচের বোতাম চাপুন</div>
+    </div>
+
+    <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+
+    <div class="controls">
+      <button class="btn primary" id="startBtn">▶ শুরু করুন</button>
+      <button class="btn" id="pauseBtn" disabled>⏸ বিরতি</button>
+      <button class="btn" id="resetBtn">↺ রিসেট</button>
+    </div>
+
+    <div class="settings">
+      <div class="setting">
+        <label for="duration">অনুশীলনের সময়:</label>
+        <select id="duration">
+          <option value="1">১ মিনিট (পরিচিতি)</option>
+          <option value="5" selected>৫ মিনিট</option>
+          <option value="10">১০ মিনিট</option>
+          <option value="15">১৫ মিনিট</option>
+        </select>
+      </div>
+      <div class="setting">
+        <label for="tone">শব্দের ধরন:</label>
+        <select id="tone">
+          <option value="warm-pad" selected>উষ্ণ প্যাড ও ঘণ্টা</option>
+          <option value="ocean">সমুদ্রের ঢেউ</option>
+          <option value="singing-bowl">ধ্যানের সিং বাউল</option>
+          <option value="wind-chime">বাতাসের উইন্ড চাইম</option>
+          <option value="minimal-bell">শুধু সীমানা-ঘণ্টা (নিরিবিলি)</option>
+        </select>
+      </div>
+      <div class="setting">
+        <label for="volume">শব্দের মাত্রা:</label>
+        <input type="range" id="volume" min="0" max="100" value="60" style="width: 90px;" />
+      </div>
+      <div class="setting">
+        <input type="checkbox" id="muteSound" />
+        <label for="muteSound">নিঃশব্দ</label>
+      </div>
+      <div class="setting">
+        <input type="checkbox" id="nightMode" />
+        <label for="nightMode">🌙 নাইট মোড</label>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-value" id="cycleStat">0</div><div class="stat-label">সম্পন্ন চক্র</div></div>
+      <div class="stat"><div class="stat-value" id="timeStat">0:00</div><div class="stat-label">মোট সময়</div></div>
+      <div class="stat"><div class="stat-value" id="phaseStat">—</div><div class="stat-label">বর্তমান ধাপ</div></div>
+    </div>
+  </section>
+
+  <section class="steps">
+    <div class="step">
+      <div class="step-num">১</div>
+      <div class="num-display">৪ সে.</div>
+      <h3>শ্বাস নিন (Inhale)</h3>
+      <p>শান্তভাবে <strong>নাক দিয়ে</strong> ৪ সেকেন্ড ধরে শ্বাস নিন। পেট ফুলবে, বুক সামান্য উঠবে।</p>
+    </div>
+    <div class="step">
+      <div class="step-num">২</div>
+      <div class="num-display">৭ সে.</div>
+      <h3>ধরে রাখুন (Hold)</h3>
+      <p>৭ সেকেন্ড শ্বাস <strong>আটকে রাখুন</strong>। এটাই কৌশলের গোপন শক্তি — রক্তে অক্সিজেন ছড়িয়ে পড়ে।</p>
+    </div>
+    <div class="step">
+      <div class="step-num">৩</div>
+      <div class="num-display">৮ সে.</div>
+      <h3>ছাড়ুন (Exhale)</h3>
+      <p>৮ সেকেন্ড ধরে <strong>মুখ দিয়ে</strong> ধীরে ধীরে শ্বাস ছাড়ুন (ফোঁ দেওয়ার মতো শব্দ হতে পারে)।</p>
+    </div>
+    <div class="step">
+      <div class="step-num">৪</div>
+      <div class="num-display">পুনরায়</div>
+      <h3>চালিয়ে যান</h3>
+      <p>নির্বাচিত সময় জুড়ে চক্রগুলো নিজে থেকেই চলতে থাকবে। প্রথমে ৫ মিনিট দিয়ে শুরু করুন।</p>
+    </div>
+  </section>
+
+  <section class="benefits">
+    <h2>🌿 এই কৌশলের উপকারিতা</h2>
+    <ul>
+      <li>মানসিক চাপ ও উদ্বেগ কমায়</li>
+      <li>ঘুমের সমস্যা দূর করে</li>
+      <li>রক্তচাপ নিয়ন্ত্রণে সাহায্য করে</li>
+      <li>স্নায়ুতন্ত্রকে শান্ত করে (parasympathetic)</li>
+      <li>হৃদস্পন্দন স্বাভাবিক রাখে</li>
+      <li>জেট ল্যাগ ও আতঙ্ক কমায়</li>
+      <li>একাগ্রতা ও মনোযোগ বাড়ায়</li>
+      <li>যেকোনো সময়, যেকোনো জায়গায় করা যায়</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>🧘 <strong>টিপস:</strong> খালি পেটে বা হালকা খাবারের পর করুন। শুয়ে বা সোজা হয়ে বসে চোখ বন্ধ রাখুন।</p>
+  </footer>
+</div>
+
+<script>
+  // === CONFIG ===
+  const PHASES = [
+    { key: 'inhale', label: 'শ্বাস নিন',  hint: 'নাক দিয়ে ধীরে শ্বাস নিন',       seconds: 4, color: 'var(--inhale)' },
+    { key: 'hold',   label: 'ধরে রাখুন',  hint: 'শ্বাস আটকে রাখুন, শান্ত থাকুন', seconds: 7, color: 'var(--hold)'   },
+    { key: 'exhale', label: 'ছাড়ুন',     hint: 'মুখ দিয়ে ধীরে ধীরে ছাড়ুন',      seconds: 8, color: 'var(--exhale)' }
+  ];
+  const INHALE = 4, HOLD = 7, EXHALE = 8, CYCLE = 19; // one full breath = 19s
+
+  function cyclesForMinutes(min) { return Math.max(1, Math.round((min * 60) / CYCLE)); }
+
+  // === STATE ===
+  let state = {
+    running: false, paused: false,
+    cyclesTotal: 16, cyclesDone: 0,
+    phaseIndex: 0, secondsLeft: 0,
+    timer: null, countdown: null,
+    totalSeconds: 0,
+  };
+
+  // === DOM ===
+  const $ = id => document.getElementById(id);
+  const circle = $('circle');
+  const count = $('count');
+  const phaseLabel = $('phaseLabel');
+  const phaseHint = $('phaseHint');
+  const startBtn = $('startBtn');
+  const pauseBtn = $('pauseBtn');
+  const resetBtn = $('resetBtn');
+  const durationSel = $('duration');
+  const toneSel = $('tone');
+  const volumeSlider = $('volume');
+  const muteChk = $('muteSound');
+  const progressBar = $('progressBar');
+  const cycleStat = $('cycleStat');
+  const timeStat = $('timeStat');
+  const phaseStat = $('phaseStat');
+  const nightChk = $('nightMode');
+
+  // === AUDIO ENGINE ===
+  let audioCtx = null;
+  let activeNodes = [];
+
+  function ensureAudio() {
+    if (!audioCtx) {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AC();
+    }
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    return audioCtx;
+  }
+
+  function stopActiveSound() {
+    activeNodes.forEach(node => {
+      try { node.stop && node.stop(); } catch(e) {}
+      try { node.disconnect && node.disconnect(); } catch(e) {}
+    });
+    activeNodes = [];
+  }
+
+  function makeNoiseBuffer(ctx, seconds, kind = 'pink') {
+    const length = Math.floor(ctx.sampleRate * seconds);
+    const buffer = ctx.createBuffer(1, length, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    if (kind === 'pink') {
+      let b0=0,b1=0,b2=0;
+      for (let i = 0; i < length; i++) {
+        const white = Math.random() * 2 - 1;
+        b0 = 0.99765 * b0 + white * 0.0990460;
+        b1 = 0.96300 * b1 + white * 0.2965164;
+        b2 = 0.57000 * b2 + white * 1.0526913;
+        data[i] = (b0 + b1 + b2 + white * 0.1848) * 0.15;
+      }
+    } else {
+      for (let i = 0; i < length; i++) data[i] = (Math.random() * 2 - 1) * 0.3;
+    }
+    return buffer;
+  }
+
+  // A soft, melodious bell — used everywhere as the phase-boundary marker.
+  function playBell(ctx, startTime, freq, peakGain = 0.25, duration = 1.8) {
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    const h = ctx.createOscillator(), hg = ctx.createGain();
+    o.type = 'sine'; h.type = 'sine';
+    o.frequency.setValueAtTime(freq, startTime);
+    h.frequency.setValueAtTime(freq * 2.01, startTime);
+    g.gain.setValueAtTime(0, startTime);
+    g.gain.linearRampToValueAtTime(peakGain, startTime + 0.02);
+    g.gain.exponentialRampToValueAtTime(0.0005, startTime + duration);
+    hg.gain.setValueAtTime(0, startTime);
+    hg.gain.linearRampToValueAtTime(peakGain * 0.35, startTime + 0.02);
+    hg.gain.exponentialRampToValueAtTime(0.0005, startTime + duration * 0.55);
+    o.connect(g); g.connect(audioCtx.destination);
+    h.connect(hg); hg.connect(audioCtx.destination);
+    o.start(startTime); o.stop(startTime + duration + 0.05);
+    h.start(startTime); h.stop(startTime + duration * 0.55 + 0.05);
+    activeNodes.push(o, h, g, hg);
+  }
+
+  // Quick 3-note arpeggio: melodious, always consonant (pentatonic intervals)
+  function playArpeggio(ctx, startTime, root, direction = 'up', peakGain = 0.28) {
+    const intervals = [1.0, 1.189, 1.498]; // root, ~minor3rd, ~perfect5th
+    const notes = (direction === 'up' ? intervals : intervals.slice().reverse()).map(i => root * i);
+    notes.forEach((freq, i) => playBell(ctx, startTime + i * 0.18, freq, peakGain, 1.8));
+  }
+
+  // ---------- STYLE 1: warm pad — pentatonic sine pad + rising/falling arpeggios ----------
+  function styleWarmPad(ctx, now, baseVol) {
+    playArpeggio(ctx, now, 261.63, 'up');                 // t=0  inhale entry
+    playBell(ctx, now + INHALE, 392.00, 0.30, 2.0);        // t=4  hold entry
+    playArpeggio(ctx, now + INHALE + HOLD, 196.00, 'down'); // t=11 exhale entry
+
+    const master = ctx.createGain();
+    master.gain.setValueAtTime(0, now);
+    master.gain.linearRampToValueAtTime(baseVol, now + 0.5);
+    master.gain.setValueAtTime(baseVol, now + INHALE + HOLD);
+    master.gain.linearRampToValueAtTime(0, now + CYCLE);
+    master.connect(ctx.destination);
+
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass'; filter.Q.value = 0.7;
+    filter.frequency.setValueAtTime(500, now);
+    filter.frequency.linearRampToValueAtTime(1600, now + INHALE);
+    filter.frequency.setValueAtTime(1600, now + INHALE + HOLD);
+    filter.frequency.linearRampToValueAtTime(500, now + CYCLE);
+    filter.connect(master);
+
+    const padNotes = [65.41, 130.81, 196.00], padGains = [1.0, 0.5, 0.3];
+    padNotes.forEach((f, i) => {
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = 'sine';
+      o.frequency.setValueAtTime(f, now);
+      o.frequency.linearRampToValueAtTime(f * 2, now + INHALE);
+      o.frequency.setValueAtTime(f * 2, now + INHALE + HOLD);
+      o.frequency.linearRampToValueAtTime(f, now + CYCLE);
+      g.gain.value = padGains[i];
+      o.connect(g); g.connect(filter);
+      o.start(now); o.stop(now + CYCLE + 0.1);
+      activeNodes.push(o, g);
+    });
+    activeNodes.push(master, filter);
+  }
+
+  // ---------- STYLE 2: ocean waves — filtered pink noise that swells like a wave ----------
+  function styleOcean(ctx, now, baseVol) {
+    playBell(ctx, now, 293.66, baseVol > 0 ? 0.16 : 0, 1.4);                 // gentle marker, inhale
+    playBell(ctx, now + INHALE, 392.00, 0.14, 1.6);                          // hold
+    playBell(ctx, now + INHALE + HOLD, 220.00, 0.16, 1.6);                   // exhale
+
+    const master = ctx.createGain();
+    master.connect(ctx.destination);
+    const noise = ctx.createBufferSource();
+    noise.buffer = makeNoiseBuffer(ctx, CYCLE + 1, 'pink');
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'bandpass'; filter.Q.value = 0.9;
+    filter.frequency.setValueAtTime(350, now);
+    filter.frequency.linearRampToValueAtTime(900, now + INHALE);
+    // gentle "breathing wave" wobble through hold
+    filter.frequency.setValueAtTime(900, now + INHALE + HOLD);
+    filter.frequency.linearRampToValueAtTime(300, now + CYCLE);
+
+    const g = ctx.createGain();
+    g.gain.setValueAtTime(0, now);
+    g.gain.linearRampToValueAtTime(baseVol * 1.6, now + INHALE * 0.6);   // wave rises with inhale
+    g.gain.linearRampToValueAtTime(baseVol * 0.9, now + INHALE + HOLD);  // settles through hold
+    g.gain.linearRampToValueAtTime(baseVol * 1.8, now + INHALE + HOLD + EXHALE * 0.5); // crest on exhale
+    g.gain.linearRampToValueAtTime(0.0001, now + CYCLE);                 // recedes to silence
+
+    noise.connect(filter); filter.connect(g); g.connect(master);
+    noise.start(now); noise.stop(now + CYCLE + 0.1);
+    activeNodes.push(noise, filter, g, master);
+  }
+
+  // ---------- STYLE 3: singing bowl — one long resonant strike per phase ----------
+  function styleSingingBowl(ctx, now, baseVol) {
+    const gainScale = baseVol * 5.5;
+    strikeBowl(ctx, now, 220.00, gainScale, INHALE + 1.2);              // inhale — struck
+    strikeBowl(ctx, now + INHALE, 329.63, gainScale * 0.9, HOLD + 1.2);  // hold — struck, longer decay
+    strikeBowl(ctx, now + INHALE + HOLD, 174.61, gainScale * 0.8, EXHALE + 1.0); // exhale — struck, settles
+  }
+  function strikeBowl(ctx, t, freq, peakGain, decay) {
+    const partials = [ {m:1, g:1}, {m:2.756, g:0.35}, {m:5.404, g:0.16}, {m:8.933, g:0.08} ];
+    partials.forEach(p => {
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = 'sine';
+      o.frequency.setValueAtTime(freq * p.m, t);
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(peakGain * p.g, t + 0.04);
+      g.gain.exponentialRampToValueAtTime(0.0006, t + decay);
+      o.connect(g); g.connect(audioCtx.destination);
+      o.start(t); o.stop(t + decay + 0.1);
+      activeNodes.push(o, g);
+    });
+  }
+
+  // ---------- STYLE 4: wind chime — soft pentatonic tinkling, denser at transitions ----------
+  function styleWindChime(ctx, now, baseVol) {
+    const scale = [261.63, 293.66, 329.63, 392.00, 440.00]; // C D E G A — pentatonic, always pleasant
+    const g = baseVol * 1.3;
+    // transition clusters — a little denser so the boundary is obvious
+    [now, now + INHALE, now + INHALE + HOLD].forEach((t, idx) => {
+      for (let i = 0; i < 3; i++) {
+        const note = scale[(idx * 2 + i) % scale.length] * (idx === 2 ? 0.5 : 1); // exhale drops an octave
+        playBell(ctx, t + i * 0.14, note, g, 1.4);
+      }
+    });
+    // sparse ambient tinkles scattered through the whole cycle
+    const tinkleTimes = [1.1, 2.6, 5.5, 8.5, 9.8, 13.5, 16.0, 17.4];
+    tinkleTimes.forEach(dt => {
+      const note = scale[Math.floor(Math.random() * scale.length)];
+      playBell(ctx, now + dt, note, g * 0.5, 1.1);
+    });
+  }
+
+  // ---------- STYLE 5: minimal bell — only the three boundary bells, true silence between ----------
+  function styleMinimalBell(ctx, now, baseVol) {
+    const g = baseVol > 0 ? 0.30 : 0;
+    playBell(ctx, now, 261.63, g, 2.0);
+    playBell(ctx, now + INHALE, 329.63, g, 3.0);
+    playBell(ctx, now + INHALE + HOLD, 392.00, g, 2.6);
+  }
+
+  const STYLES = {
+    'warm-pad': styleWarmPad,
+    'ocean': styleOcean,
+    'singing-bowl': styleSingingBowl,
+    'wind-chime': styleWindChime,
+    'minimal-bell': styleMinimalBell
+  };
+
+  function playBreathCycle() {
+    if (muteChk.checked) return;
+    const ctx = ensureAudio();
+    const now = ctx.currentTime;
+    const baseVol = (volumeSlider.value / 100) * 0.18;
+    const fn = STYLES[toneSel.value] || styleWarmPad;
+    fn(ctx, now, baseVol);
+  }
+
+  // === CORE ===
+  function reset() {
+    state.running = false; state.paused = false;
+    state.cyclesDone = 0; state.phaseIndex = 0; state.totalSeconds = 0;
+    state.cyclesTotal = cyclesForMinutes(parseInt(durationSel.value));
+    if (state.timer) clearTimeout(state.timer);
+    if (state.countdown) clearInterval(state.countdown);
+    stopActiveSound();
+    circle.className = 'circle';
+    circle.style.transform = 'scale(0.6)';
+    count.textContent = '4';
+    phaseLabel.textContent = 'প্রস্তুত হন';
+    phaseLabel.style.color = 'var(--inhale)';
+    phaseHint.textContent = 'শুরু করতে নিচের বোতাম চাপুন';
+    progressBar.style.width = '0%';
+    cycleStat.textContent = '0';
+    timeStat.textContent = '0:00';
+    phaseStat.textContent = '—';
+    startBtn.disabled = false;
+    startBtn.innerHTML = '▶ শুরু করুন';
+    pauseBtn.disabled = true;
+  }
+
+  function start() {
+    if (state.running && !state.paused) return;
+    if (!state.running) {
+      state.cyclesTotal = cyclesForMinutes(parseInt(durationSel.value));
+      state.cyclesDone = 0; state.totalSeconds = 0;
+      state.running = true;
+      startBtn.disabled = true;
+      pauseBtn.disabled = false;
+      pauseBtn.innerHTML = '⏸ বিরতি';
+      setTimeout(() => runPhase(), 800);
+    } else if (state.paused) {
+      state.paused = false;
+      pauseBtn.innerHTML = '⏸ বিরতি';
+      runPhase();
+    }
+  }
+
+  function pause() {
+    if (!state.running) return;
+    state.paused = true;
+    if (state.timer) clearTimeout(state.timer);
+    if (state.countdown) clearInterval(state.countdown);
+    stopActiveSound();
+    pauseBtn.innerHTML = '▶ আবার চালু';
+    phaseHint.textContent = 'বিরতি — পুনরায় শুরু করতে বোতাম চাপুন';
+  }
+
+  function runPhase() {
+    if (!state.running || state.paused) return;
+    if (state.cyclesDone >= state.cyclesTotal) { finish(); return; }
+    const phase = PHASES[state.phaseIndex];
+    state.secondsLeft = phase.seconds;
+
+    phaseLabel.textContent = phase.label;
+    phaseLabel.style.color = phase.color;
+    phaseHint.textContent = phase.hint;
+    phaseStat.textContent = phase.key === 'inhale' ? 'শ্বাস' : phase.key === 'hold' ? 'ধরে' : 'ছাড়ুন';
+
+    circle.className = 'circle ' + phase.key;
+    if (phase.key === 'inhale') {
+      circle.style.transform = 'scale(1.5)';
+      stopActiveSound();
+      playBreathCycle();
+    } else if (phase.key === 'hold') {
+      circle.style.transform = 'scale(1.5)';
+    } else {
+      circle.style.transform = 'scale(0.6)';
+    }
+
+    count.textContent = state.secondsLeft;
+    if (state.countdown) clearInterval(state.countdown);
+    state.countdown = setInterval(() => {
+      state.secondsLeft--; state.totalSeconds++;
+      if (state.secondsLeft > 0) count.textContent = state.secondsLeft;
+      updateStats();
+    }, 1000);
+
+    state.timer = setTimeout(() => {
+      clearInterval(state.countdown);
+      if (phase.key === 'exhale') { state.cyclesDone++; cycleStat.textContent = state.cyclesDone; }
+      state.phaseIndex = (state.phaseIndex + 1) % 3;
+      setTimeout(() => runPhase(), 1000);
+    }, phase.seconds * 1000);
+  }
+
+  function updateStats() {
+    const m = Math.floor(state.totalSeconds / 60), s = state.totalSeconds % 60;
+    timeStat.textContent = `${m}:${s.toString().padStart(2,'0')}`;
+    const totalDuration = state.cyclesTotal * CYCLE;
+    const progress = ((state.cyclesDone * CYCLE + (PHASES[state.phaseIndex].seconds - state.secondsLeft)) / totalDuration) * 100;
+    progressBar.style.width = Math.min(100, progress) + '%';
+  }
+
+  function finish() {
+    state.running = false;
+    if (state.timer) clearTimeout(state.timer);
+    if (state.countdown) clearInterval(state.countdown);
+    setTimeout(() => stopActiveSound(), 500);
+    phaseLabel.textContent = 'সম্পন্ন!';
+    phaseLabel.style.color = '#34d399';
+    phaseHint.textContent = 'আপনার মন এখন অনেক শান্ত। নিজেকে ধন্যবাদ জানান।';
+    progressBar.style.width = '100%';
+    startBtn.disabled = false;
+    startBtn.innerHTML = '▶ আবার শুরু করুন';
+    pauseBtn.disabled = true;
+  }
+
+  startBtn.addEventListener('click', start);
+  pauseBtn.addEventListener('click', () => state.paused ? start() : pause());
+  resetBtn.addEventListener('click', reset);
+  durationSel.addEventListener('change', () => { if (!state.running) reset(); });
+  volumeSlider.addEventListener('input', () => {});
+  muteChk.addEventListener('change', () => { if (muteChk.checked) stopActiveSound(); });
+  nightChk.addEventListener('change', () => { document.body.classList.toggle('night', nightChk.checked); });
+
+  document.addEventListener('keydown', e => {
+    if (e.code === 'Space') { e.preventDefault(); state.running ? pause() : start(); }
+    if (e.key === 'r' || e.key === 'R') reset();
+  });
+
+  reset();
+</script>
+</body>
+</html>
